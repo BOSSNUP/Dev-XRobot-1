@@ -280,7 +280,7 @@ async def lego(event):
     draw.text((x, y), text, font=font, fill="white", stroke_width=1, stroke_fill="black")
     fname = "DevXRobot.png"
     img.save(fname, "png")
-    await telethn.send_file(event.chat_id, file=fname, caption = f"Made by @DevXRobot🥳")         
+    await telethn.send_file(event.chat_id, file=fname, caption = f"Made by [𝗗𝗲𝘃ꗄ➺✘「🇮🇳」💞](https://t.me/DevX_Robot)")         
     await pesan.delete()
     if os.path.exists(fname):
             os.remove(fname)
