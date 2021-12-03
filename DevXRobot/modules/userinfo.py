@@ -114,7 +114,7 @@ def hpmanager(user):
 
 def make_bar(per):
     done = min(round(per / 10), 10)
-    return "💖" * done + "💔" * (10 - done)
+    return "■" * done + "□" * (10 - done)
 
 
 @run_async
@@ -241,21 +241,21 @@ def info(update: Update, context: CallbackContext):
     rep = message.reply_text("<code>Appraising...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"╒═══「<b> 🥳𝙰𝚙𝚙𝚛𝚊𝚒𝚜𝚊𝚕 𝚛𝚎𝚜𝚞𝚕𝚝𝚜💞:</b> 」\n"
-        f"✘°「𝙸𝙳」🔸: <code>{user.id}</code>\n"
-        f"✘°「𝙵𝙸𝚁𝚂𝚃ꗄ➺𝙽𝙰𝙼𝙴」🔸: {html.escape(user.first_name)}"
+        f"╒═══「<b> Appraisal results:</b> 」\n"
+        f"ID: <code>{user.id}</code>\n"
+        f"First Name: {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\n✘°「𝙻𝙰𝚂𝚃 𝙽𝙰𝙼𝙴」🔸: {html.escape(user.last_name)}"
+        text += f"\nLast Name: {html.escape(user.last_name)}"
 
     if user.username:
-        text += f"\n✘°「𝚄𝚂𝙴𝚁𝙽𝙰𝙼𝙴」🔸: @{html.escape(user.username)}"
+        text += f"\nUsername: @{html.escape(user.username)}"
 
-    text += f"\n✘°「𝙿𝚁𝙴𝙼𝙰𝙻𝙸𝙽𝙺」🔸: {mention_html(user.id, '✘𝙻𝙸𝙽𝙺✘')}"
+    text += f"\nPermalink: {mention_html(user.id, 'link')}"
 
     if chat.type != "private" and user_id != bot.id:
-        _stext = "\n✘°「𝙿𝚁𝙴𝚂𝙴𝙽𝙲𝙴」🔸: <code>{}</code>"
+        _stext = "\nPresence: <code>{}</code>"
 
         afk_st = is_afk(user.id)
         if afk_st:
@@ -271,7 +271,7 @@ def info(update: Update, context: CallbackContext):
                     text += _stext.format("Admin")
     if user_id not in [bot.id, 777000, 1087968824]:
         userhp = hpmanager(user)
-        text += f"\n\n<b>✘°「𝙷𝙴𝙰𝙻𝚃𝙷」☄:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
+        text += f"\n\n<b>Health:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
 
     try:
         spamwtc = sw.get_ban(int(user.id))
@@ -287,7 +287,7 @@ def info(update: Update, context: CallbackContext):
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += "\n\nThe Disaster level of this person is 'God'."
+        text += "\n\nThe Disaster level of this person is 'ELTIMITING GOD'."
         disaster_level_present = True
     elif user.id in DEV_USERS:
         text += "\n\nThis user is member of 'Hero Association'."
@@ -319,7 +319,7 @@ def info(update: Update, context: CallbackContext):
             result = result.json()["result"]
             if "custom_title" in result.keys():
                 custom_title = result["custom_title"]
-                text += f"\n\n✘°「𝚈𝙾𝚄𝚁 𝚃𝙸𝚃𝙻𝙴」:\n<b>{custom_title}</b>"
+                text += f"\n\nTitle:\n<b>{custom_title}</b>"
     except BadRequest:
         pass
 
@@ -422,7 +422,7 @@ def set_about_me(update: Update, context: CallbackContext):
 @run_async
 @sudo_plus
 def stats(update: Update, context: CallbackContext):
-    stats = "<b>💞🥲𝙲𝚞𝚛𝚛𝚎𝚗𝚝 𝚂𝚝𝚊𝚝𝚜 𝚘𝚏 𝗗𝗲𝘃ꗄ➺✘「🇮🇳」🥳💞:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
+    stats = "<b>📊🔎Current stats🚀🚀:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
 
@@ -567,7 +567,7 @@ dispatcher.add_handler(GET_BIO_HANDLER)
 dispatcher.add_handler(SET_ABOUT_HANDLER)
 dispatcher.add_handler(GET_ABOUT_HANDLER)
 
-__mod_name__ = "𝙸𝙽𝙵𝙾𝚂💟"
+__mod_name__ = "Infos"
 __command_list__ = ["setbio", "bio", "setme", "me", "info"]
 __handlers__ = [
     ID_HANDLER,
