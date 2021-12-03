@@ -158,11 +158,11 @@ def chat_checker(update: Update, context: CallbackContext):
 
 def __user_info__(user_id):
     if user_id in [777000, 1087968824]:
-        return """╘══「 𝙶𝚛𝚘𝚞𝚙𝚜 𝚌𝚘𝚞𝚗𝚝🤭: <code>???</code> 」"""
+        return """╘══「 Groups count: <code>???</code> 」"""
     if user_id == dispatcher.bot.id:
-        return """╘══「 𝙶𝚛𝚘𝚞𝚙𝚜 𝚌𝚘𝚞𝚗𝚝🤭: <code>???</code> 」"""
+        return """╘══「 Groups count: <code>???</code> 」"""
     num_chats = sql.get_user_num_chats(user_id)
-    return f"""╘══「 𝙶𝚛𝚘𝚞𝚙𝚜 𝚌𝚘𝚞𝚗𝚝🤭: <code>{num_chats}</code> 」"""
+    return f"""╘══「 Groups count: <code>{num_chats}</code> 」"""
 
 
 def __stats__():
@@ -187,5 +187,5 @@ dispatcher.add_handler(BROADCAST_HANDLER)
 dispatcher.add_handler(CHATLIST_HANDLER)
 dispatcher.add_handler(CHAT_CHECKER_HANDLER, CHAT_GROUP)
 
-__mod_name__ = "🧍𝚄𝚂𝙴𝚁𝚂🧍"
+__mod_name__ = "Users"
 __handlers__ = [(USER_HANDLER, USERS_GROUP), BROADCAST_HANDLER, CHATLIST_HANDLER]
